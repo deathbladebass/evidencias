@@ -93,3 +93,16 @@ Ahora para comprobar que PHP esta funcionando correctamente crearemos un pequeñ
 
 Ahora si entramos a ese archivo desde el dominio aparecera esto:
 ![](img/script2.png)
+
+# Tarea 02.
+
+Tendremos que utilizar una ip elastica, para ello entraremos aqui en el servidor:
+![](img/ipelastica.png)
+En la siguiente ventana le daremos a **Alocate an Elastic IP** :
+![](img/ipelastica2.png)
+![](img/ipelastica3.png)
+Ahora tendremos la ip elastica, pero no esta asociado a ningun servidor, para ello le daremos click a **Associate elastic ip address**:
+![](img/ipelastica4.png)
+En esta ventana elegiremos nuestro servidor:
+![](img/ipelastica5.png)
+Ya tendremos la ip elastica asociada al servidor.
