@@ -106,3 +106,48 @@ Ahora tendremos la ip elastica, pero no esta asociado a ningun servidor, para el
 En esta ventana elegiremos nuestro servidor:
 ![](img/ipelastica5.png)
 Ya tendremos la ip elastica asociada al servidor.
+
+# Tarea 03 / 04.
+
+Crearemos un registro DNS para nuestro servidor, para ello accederemos al panel del subdominio y entraremos en registro DNS.
+![](img/dns.png)
+
+Ahora deberemos modificar el *Virtual Host*.
+Primero haremos una copia de 000-default.conf y lo editaremos:
+![](img/virtualhostdns1.png)
+![](img/virtualhostdns2.png)
+Activamos el virtual host y reiniciamos apache.
+![](img/virtualhostdns3.png)
+Entramos al dominio *(yo ya he subido un index)*.
+![](img/virtualhostdns4.png)
+
+# Tarea 05.
+
+Ahora debemos crear el servidor FTP para poder intercambiar archivos con el servidor.
+
+Primero instalamos vsftpd
+````sudp apt-get install vsftpd````
+
+Una vez instalador tenemos que permitir el trafico FTP desde el firewall
+
+para ello usaremos estos comandos
+````
+sudo ufw allow 20/tcp
+
+sudo ufw allow 21/tcp
+
+sudo ufw allow 990/tcp
+
+sudo ufw allow 40000:50000/tcp
+````
+Ahora comprobamos que estan activos
+![](img/ftpfirewall.png)
+
+una vez activo crearemos los usuarios
+````
+sudo useradd -g ftp -d /var/www/cliente/ -c "Usu Cliente" cliente
+
+sudo useradd -g ftp -d /var/www/servidor/ -c "Usu Servidor" servidor
+
+sudo useradd -g ftp -d /var/www/ -c "Usu admin" administrador
+````
