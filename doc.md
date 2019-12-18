@@ -130,24 +130,28 @@ Primero instalamos vsftpd
 
 Una vez instalador tenemos que permitir el trafico FTP desde el firewall
 
-para ello usaremos estos comandos
-````
-sudo ufw allow 20/tcp
+para añadiremos una regla aqui
 
-sudo ufw allow 21/tcp
+![](img/puertoftp.png)
 
-sudo ufw allow 990/tcp
-
-sudo ufw allow 40000:50000/tcp
-````
 Ahora comprobamos que estan activos
 ![](img/ftpfirewall.png)
 
 una vez activo crearemos los usuarios
-````
-sudo useradd -g ftp -d /var/www/cliente/ -c "Usu Cliente" cliente
 
-sudo useradd -g ftp -d /var/www/servidor/ -c "Usu Servidor" servidor
+````sudo useradd -g ftp -d /var/www/cliente/ -c "Usu Cliente" cliente````
 
-sudo useradd -g ftp -d /var/www/ -c "Usu admin" administrador
-````
+````sudo useradd -g ftp -d /var/www/servidor/ -c "Usu Servidor" servidor````
+
+````sudo useradd -g ftp -d /var/www/ -c "Usu admin" administrador````
+
+
+Tambien deberemos asignar contraseñas a esos usuarios con ***sudo passwd "usuario"***
+
+Ahora nos podremos conectar mediante WinSCP:
+Cliente:
+![](img/ftpcliente.png)
+Servidor:
+![](img/servidorftp.png)
+Admin:
+![](img/adminftp.png)
