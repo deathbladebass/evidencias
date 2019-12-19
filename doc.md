@@ -155,3 +155,14 @@ Servidor:
 ![](img/servidorftp.png)
 Admin:
 ![](img/adminftp.png)
+
+# Tarea 06.
+
+Comprimiremos las carpetas y comprobamos que se hayan comprimido:
+![](img/tar.png)
+
+Ahora crearemos la bbdd
+![](img/bbdd.png)
+Y exportamos la bbdd
+![](img/bbddsql.png)
+![](img/bbddsql2.png)
