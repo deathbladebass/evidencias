@@ -166,3 +166,26 @@ Ahora crearemos la bbdd
 Y exportamos la bbdd
 ![](img/bbddsql.png)
 ![](img/bbddsql2.png)
+
+# Tarea 07.
+
+Primero creamos una carpeta para guardar las copias de seguridad.
+
+Creamos un archivo php para ejecutar el script:
+![](img/backupphp2.png)
+Creamos el script:
+![](img/backupsh.png)
+Ahora damos permisos en la carpeta en la que esta la web:
+![](img/backupcarpetas1.png)
+Damos permiso a la carpeta backup:
+![](img/backupcarpetas2.png)
+Cambiamos el usuario por si hubiera errores:
+![](img/backupcarpetas3.png)
+Comprobamos que ejecuta el php:
+![](img/backup.png)
+
+Ahora automatizaremos los backups, para ello editaremos el archivo /etc/crontab:
+![](img/crontab1.png)
+Y para borrar los archivos de mas de una semana de antiguedad añadiremos esta linea:
+![](img/crontab2.png)
+
