@@ -48,77 +48,114 @@ Instalaremos PHP usando este comando:
 ````sudo apt install php libapache2-mod-php php-mysql````
 ![](img/php_instalado.png)
 
+
 Ahora tendremos que configurar apache para que index.php tenga preferencia.
 Para eso editaremos el archivo ***dir.conf***:
 ````sudo nano /etc/apache2/mods-enabled/dir.conf````
+
+
 Estara asi:
 ![](img/php_index1.png)
+
+
 Lo dejamos asi:
 ![](img/php_index2.png)
 
+
 Reiniciamos apache:
+
 ````sudo systemctl restart apache2````
 
 Ahora configuramos los virtual hosts:
 Primero creamos una carpeta para nuestro dominio.
+
+
 ````sudo mkdir /var/www/adrian.fpz1920.com````
 
 Ahora aplicamos permisos en la carpeta.
+
+
 ````sudo chown -R $USER:$USER /var/www/adrian.fpz1920.com````
 ````sudo chmod -R 755 /var/www/adrian.fpz1920.com````
 
 Ahora creamos un index para nuestro dominio:
+
+
 ````nano /var/www/adrian.fpz1920.com/index.php````
 
 Ahora creamos el archivo del virtual host:
+
+
 ````sudo nano /etc/apache2/sites-available/adrian.fpz1920.com.conf````
 
 ![](img/virtualhost.png)
 
 Vamos a activar el host:
+
 ````sudo a2ensite adrian.fpz1920.com.conf````
 
 Y desactivamos el default:
+
 ````sudo a2dissite 000-default.conf````
 
 Hacemos un test para comprobar errores:
+
 ````sudo apache2ctl configtest````
 
 Si no hay ningun fallo reiniciamos apache:
+
 ````sudo systemctl restart apache2````
 
 Ahora para comprobar que PHP esta funcionando correctamente crearemos un pequeño script.
+
 ````sudo nano /var/www/adrian.fpz1920.com/info.php````
 ![](img/script.png)
 
 Ahora si entramos a ese archivo desde el dominio aparecera esto:
+
 ![](img/script2.png)
 
 # Tarea 02.
 
 Tendremos que utilizar una ip elastica, para ello entraremos aqui en el servidor:
+
 ![](img/ipelastica.png)
+
 En la siguiente ventana le daremos a **Alocate an Elastic IP** :
+
 ![](img/ipelastica2.png)
 ![](img/ipelastica3.png)
+
 Ahora tendremos la ip elastica, pero no esta asociado a ningun servidor, para ello le daremos click a **Associate elastic ip address**:
+
 ![](img/ipelastica4.png)
+
 En esta ventana elegiremos nuestro servidor:
+
 ![](img/ipelastica5.png)
+
 Ya tendremos la ip elastica asociada al servidor.
+
 
 # Tarea 03 / 04.
 
 Crearemos un registro DNS para nuestro servidor, para ello accederemos al panel del subdominio y entraremos en registro DNS.
+
 ![](img/dns.png)
 
 Ahora deberemos modificar el *Virtual Host*.
+
 Primero haremos una copia de 000-default.conf y lo editaremos:
+
 ![](img/virtualhostdns1.png)
 ![](img/virtualhostdns2.png)
+
 Activamos el virtual host y reiniciamos apache.
+
 ![](img/virtualhostdns3.png)
+
 Entramos al dominio *(yo ya he subido un index)*.
+
 ![](img/virtualhostdns4.png)
 
 # Tarea 05.
@@ -126,6 +163,7 @@ Entramos al dominio *(yo ya he subido un index)*.
 Ahora debemos crear el servidor FTP para poder intercambiar archivos con el servidor.
 
 Primero instalamos vsftpd
+
 ````sudp apt-get install vsftpd````
 
 Una vez instalador tenemos que permitir el trafico FTP desde el firewall
@@ -135,6 +173,7 @@ para añadiremos una regla aqui
 ![](img/puertoftp.png)
 
 Ahora comprobamos que estan activos
+
 ![](img/ftpfirewall.png)
 
 una vez activo crearemos los usuarios
@@ -149,43 +188,69 @@ una vez activo crearemos los usuarios
 Tambien deberemos asignar contraseñas a esos usuarios con ***sudo passwd "usuario"***
 
 Ahora nos podremos conectar mediante WinSCP:
+
 Cliente:
+
 ![](img/ftpcliente.png)
+
 Servidor:
+
 ![](img/servidorftp.png)
+
 Admin:
+
 ![](img/adminftp.png)
 
 # Tarea 06.
 
 Comprimiremos las carpetas y comprobamos que se hayan comprimido:
+
 ![](img/tar.png)
 
 Ahora crearemos la bbdd
+
 ![](img/bbdd.png)
+
 Y exportamos la bbdd
+
 ![](img/bbddsql.png)
+
 ![](img/bbddsql2.png)
+
 
 # Tarea 07.
 
 Primero creamos una carpeta para guardar las copias de seguridad.
 
 Creamos un archivo php para ejecutar el script:
+
 ![](img/backupphp2.png)
+
 Creamos el script:
+
 ![](img/backupsh.png)
+
 Ahora damos permisos en la carpeta en la que esta la web:
+
 ![](img/backupcarpetas1.png)
+
 Damos permiso a la carpeta backup:
+
 ![](img/backupcarpetas2.png)
+
 Cambiamos el usuario por si hubiera errores:
+
 ![](img/backupcarpetas3.png)
+
 Comprobamos que ejecuta el php:
+
 ![](img/backup.png)
 
 Ahora automatizaremos los backups, para ello editaremos el archivo /etc/crontab:
+
 ![](img/crontab1.png)
+
 Y para borrar los archivos de mas de una semana de antiguedad añadiremos esta linea:
+
 ![](img/crontab2.png)
 
